@@ -1,0 +1,24 @@
+{
+  "name": "tapjournal_backend_v1",
+  "version": "1.0.0",
+  "description": "We created Tap Journal as a platform where you make your journal entries. Using Fine-tuned LLMs, we perform RAG on your content and allow you to find insights for you and your therapist. Make the most out of your therapy sessions by asking your therapist the right questions.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuadmuhtasim/TapJournal_backend_v1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuadmuhtasim/TapJournal_backend_v1/issues"
+  },
+  "homepage": "https://github.com/fuadmuhtasim/TapJournal_backend_v1#readme",
+  "dependencies": {
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
+}

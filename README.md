@@ -16,6 +16,14 @@ This project is the server that hosts the Database backend and provides endpoint
 - Connects to OpenAI API
 - Provides endpoints for fast data access
 
+## ER Relationship Diagram
+
+This is the ER Diagram for the Postgres Database that was then converted to Relational Tables
+![Alt text](./er_diagram.png)
+
+This is the final database schema that has been decided upon. It will be followed in the creation of the Postgres Database
+![Alt text](./database_schema.png)
+
 ## Installation
 
 Steps to set up and run your project locally:
