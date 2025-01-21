@@ -19,6 +19,7 @@
   "homepage": "https://github.com/fuadmuhtasim/TapJournal_backend_v1#readme",
   "dependencies": {
     "express": "^4.21.2",
+    "joi": "^17.13.3",
     "pg": "^8.13.1"
   }
 }
