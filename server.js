@@ -1,12 +1,17 @@
 const express = require('express');
 const app = express();
 const port = 4000;
-const createUser = require("./routes/createUser");
 const { validateUser, validateEntry, EntrySchema, UserSchema } = require('./middleware/reqValidation');
+const CreateEntry = require('./routes/createEntry');
+const pool = require('./database/database');
+const {Pool} = require('pg');
+
+//Middleware
+app.use(express.json()); //For parsing req.body from requests
 
 //Route Definitions here
 app.get('/',(req,res) => {
-    res.send("Hello this is from the root route");
+    res.send("This is from the root node");
 });
 
 //Due to time constraints, User Sessions will not be implemented.
@@ -19,22 +24,41 @@ app.get('/journalEntries', (req,res) => {
     res.send('JournalEntries');
 });
 //Endpoint 2: posts a Journal Entry | Ensure proper json body -> Check EntrySchema
-app.post('/journalEntries', (req,res) => {
-    
-});
+app.post('/journalEntries',validateEntry, CreateEntry);
+    // const { journal_id, title, details } = req.body;
+    // const query = `
+    //   INSERT INTO journal_items (journal_id, title, description)
+    //   VALUES ($1, $2, $3)
+    // `;
+    // //Connect to database
+    // try {
+    //     const client = await pool.connect()
+    //     try {
+    //         //Execute the query here
+    //         const result = await client.query(query, [journal_id, title, details]);
+    //         res.status(201).json({
+    //             message: 'Entry created successfully!',
+    //         });
+    //         } catch (error) {
+    //         console.error('Error creating entry:', error);
+    //         res.status(500).json({ error: 'An error occurred while creating the entry.' });
+    //         }
+    //         finally {
+    //             client.release();
+    //         }
+    //     }
+    // catch(err) {
+    //     res.status(400).send('Error connecting to database');
+    // }
+// });
 //Endpoint 3: gets all Reflection Entries
 app.get('/reflectionEntries', (req,res) => {
     res.send('Reflection Entries');
 });
 //Endpoint 4: posts a Reflection Entry | Ensure proper json body -> Check EntrySchema
-app.post('/journalEntries', (req,res) => {
-    
+app.post('/reflectionEntries',validateEntry, (req,res) => {
 });
-
-
-
 //This is where the express server listens from
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
-
 });

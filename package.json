@@ -4,6 +4,7 @@
   "description": "We created Tap Journal as a platform where you make your journal entries. Using Fine-tuned LLMs, we perform RAG on your content and allow you to find insights for you and your therapist. Make the most out of your therapy sessions by asking your therapist the right questions.",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,8 @@
     "express": "^4.21.2",
     "joi": "^17.13.3",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

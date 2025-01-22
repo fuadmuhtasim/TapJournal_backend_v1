@@ -7,7 +7,7 @@ const pool = new Pool({
     port: 5432,
     database: "tap_journal",
     max: 10,
-    idleTimeoutMillis: 30000
+    idleTimeoutMillis: 10000
 });
 
-module.export = pool;
+module.exports = pool;
