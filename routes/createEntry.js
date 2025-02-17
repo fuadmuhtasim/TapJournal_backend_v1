@@ -1,9 +1,9 @@
 const pool = require('../database/database');
 
-const CreateEntry = async (req,res) => {
+const CreateEntry = async (req,res, route) => {
     const { journal_id, title, details } = req.body;
     const query = `
-            INSERT INTO journal_items (journal_id, title, description)
+            INSERT INTO ${route} (journal_id, title, description)
             VALUES ($1, $2, $3)
             `;
     try {
@@ -16,16 +16,16 @@ const CreateEntry = async (req,res) => {
         }
         catch(err) {
             res.status(500).json({
-                message: 'Error adding entry', 
-                details: error.details.map(detail => detail.message)
-              });
+                message: 'Error adding entry',
+                details: err.details ? err.details.map(detail => detail.message) : err.message
+            });
         }
         finally {
             client.release();
         }
     }
     catch(err) {
-        res.status(500).json({error: 'An Error has occurred connecting to database.'})
+        res.status(500).json({error: 'An Error has occurred connecting to database.' })
     }
 };
 

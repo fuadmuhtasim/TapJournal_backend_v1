@@ -16,7 +16,10 @@ const UserSchema = Joi.object({
 const validateUser = (req,res,next) => {
     const {error} = UserSchema.validate(req.body);
     if (error) {
-        return res.status(400).json({Message: 'Bad request. The body could not be validated and does not match schema for the endpoint.'})
+        return res.status(400).json({
+            message: 'Bad Request', 
+            details: error.details.map(detail => detail.message)
+          });
     }
     next();
 }
